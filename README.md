@@ -6,22 +6,7 @@ The goal is to change the react application's language without difficulties.
 ### Languages and schema
 You need to define the application's languages based on current schema:
 ```json
-{
-	"title": "Name of language in the language itself",
-	"description": "Short description of the language",
-	"value": "Cammel case value of the language (programming purposes)",
-	"words": {
-		"pages": {
-			"your-page": {
-				"title": "Title of your-page"
-			}
-		},
-		"components": {
-			"your-component": {
-				"title": "Title of your-component"
-			}
-		}
-	}
+{ "title": "Name of language in the language itself", "description": "Short description of the language", "value": "Cammel case value of the language (programming purposes)", "words": { "pages": { "your-page": { "title": "Title of your-page" } }, "components": { "your-component": { "title": "Title of your-component" } } }
 }
 ```
 
@@ -104,6 +89,7 @@ const Page: React.FC = () => {
 #### Setting the current language
 Javascript
 ```jsx
+// pages/Page.js
 import React from 'react';
 import lang from './languages.json';
 import { useLanguage } from 'uselanguage';
@@ -134,6 +120,7 @@ const Page = () => {
 
 Typescript:
 ```jsx
+// pages/Page.js
 import React from 'react';
 import lang from './languages.json';
 import { useLanguage } from 'uselanguage';
