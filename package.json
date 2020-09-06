@@ -1,0 +1,22 @@
+{
+  "name": "use-language",
+  "version": "1.0.0",
+  "description": "Custom hook useLanguage to change languages on React's applications.",
+  "main": "dist/index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "keywords": [
+    "typescript",
+    "languages",
+    "react"
+  ],
+  "author": "Matheus Landu da Silva",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.13.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.49"
+  }
+}
