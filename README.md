@@ -40,8 +40,8 @@ const App = () => {
   const defaultLanguage = lang.languages[0];
   return (
     <LanguageProvider defaultValue={defaultLanguage}>
-	  <Routes />
-	</LanguageProvider />
+	    <Routes />
+	  </LanguageProvider >
   )
 }
 ```
@@ -57,8 +57,8 @@ const App: React.FC = () => {
   const defaultLanguage = lang.languages[0];
   return (
     <LanguageProvider defaultValue={defaultLanguage}>
-	  <Routes />
-	</LanguageProvider />
+	    <Routes />
+	  </LanguageProvider >
   )
 }
 ```
@@ -78,13 +78,13 @@ const Page = () => {
   
   return (
     <div className="page">
-	  <h1>{language.words.pages.page.title}</h1>
+	    <h1>{language.words.pages.page.title}</h1>
     </div>
   )
 }
 ```
 
-Typescript
+Typescript:
 ```jsx
 // pages/Page.js
 import React from 'react';
@@ -95,11 +95,12 @@ const Page: React.FC = () => {
   
   return (
     <div className="page">
-	  <h1>{language.words.pages?.page.title}</h1>
+	    <h1>{language.words.pages?.page.title}</h1>
     </div>
   )
 }
 ```
+
 #### Setting the current language
 Javascript
 ```jsx
@@ -113,24 +114,25 @@ const Page = () => {
   const handleChangeLanguage = e => {
     const filteredLanguage = lang.languages.filter(lang => lang.value === e.target.value);
 	
-	setLanguage(filteredLanguage[0]);
+	  setLanguage(filteredLanguage[0]);
   }
   
   return (
     <div className="page">
-	  <h1>{language.words.pages.page.title}</h1>
-	  <select  onChange={handleChangeLanguage}>
-	    {lang.languages.map(lang  => (
-		  <option  value={lang.value}>
-		    {lang.title}
-		  </option>
-		))}
-	  </select>
+	    <h1>{language.words.pages.page.title}</h1>
+	    <select onChange={handleChangeLanguage}>
+	      {lang.languages.map(lang => (
+		      <option value={lang.value}>
+		        {lang.title}
+		      </option>
+		    ))}
+	    </select>
     </div>
   )
 }
 ```
-Typescript
+
+Typescript:
 ```jsx
 import React from 'react';
 import lang from './languages.json';
@@ -142,19 +144,19 @@ const Page: React.FC = () => {
   const handleChangeLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const filteredLanguage = lang.languages.filter(lang => lang.value === e.target.value);
 	
-	setLanguage(filteredLanguage[0]);
+	  setLanguage(filteredLanguage[0]);
   }
   
   return (
     <div className="page">
-	  <h1>{language.words.pages.page.title}</h1>
-	  <select  onChange={handleChangeLanguage}>
-	    {lang.languages.map(lang  => (
-		  <option  value={lang.value}>
-		    {lang.title}
-		  </option>
-		))}
-	  </select>
+	    <h1>{language.words.pages.page.title}</h1>
+	    <select onChange={handleChangeLanguage}>
+	      {lang.languages.map(lang => (
+		      <option value={lang.value}>
+		        {lang.title}
+		      </option>
+		    ))}
+	    </select>
     </div>
   )
 }
