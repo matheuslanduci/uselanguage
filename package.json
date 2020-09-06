@@ -11,7 +11,7 @@
     "languages",
     "react"
   ],
-  "author": "Matheus Landu da Silva",
+  "author": "Matheus Landuci da Silva",
   "license": "MIT",
   "dependencies": {
     "react": "^16.13.1"
