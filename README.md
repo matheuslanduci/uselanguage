@@ -13,7 +13,7 @@ You need to define the application's languages based on current schema:
 {
   "title": "Name of language in the language itself",
   "description": "Short description of the language",
-  "value": "Cammel case value of the language (programming purposes)",
+  "value": "Cammel case value of the language (programming purpose)",
   "words": {
     "pages": {
       "your-page": {
@@ -35,11 +35,14 @@ Language Provider is the language's context provider on application.
 
 Arguments
 
-#### `"defaultValue: string"`
+#### `"defaultValue: LanguageSchema"`
 Specify language's default value. 
 
 #### `"persisted?: boolean"`
 Specify if the state will be storaged on localStorage or not. Default value: false.
+
+#### `"languages: LanguageSchema[]"`
+Specify all languages used in application (only needed if persisted is true);
 
 Javascript:
 

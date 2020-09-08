@@ -10466,10 +10466,10 @@ use@^3.1.0:
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
   integrity sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ==
 
-uselanguage@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/uselanguage/-/uselanguage-1.1.1.tgz#b336e4acb745daf6e743f49946e5798444929469"
-  integrity sha512-D0Sr6WOSP7WQwCpvaY/s1Ei55zcntYog3IB/GHUB8mU8feoSDGFsUfXBZuIotvdXvO5/L5R8pK+wuGA2hfYkLw==
+uselanguage@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/uselanguage/-/uselanguage-1.2.0.tgz#7a69dfda2946594da42f5af1bea0fac5838a9cb9"
+  integrity sha512-zgJSm+Eix19b2S6rmK//ahnKloJ96pVrJRzzC5m5G33huQoYhxZY18BRwiet0znQwkjQ09mVjFIRsf0qQBWr6A==
 
 util-deprecate@^1.0.1, util-deprecate@~1.0.1:
   version "1.0.2"

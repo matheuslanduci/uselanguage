@@ -1,16 +1,20 @@
-import * as React from 'react';
+import * as React from "react";
 import Routes from "./routes";
-import lang from "./languages.json";
+import languages from "./languages.json";
 import { LanguageProvider } from "uselanguage";
 
-const App: React.FC = () => {  
-  const defaultLanguage = lang.languages[0];
+const App: React.FC = () => {
+  const defaultLanguage = languages[0];
 
   return (
-    <LanguageProvider defaultValue={defaultLanguage}>
+    <LanguageProvider
+      defaultValue={defaultLanguage}
+      persisted
+      languages={languages}
+    >
       <Routes />
     </LanguageProvider>
-  )
-}
+  );
+};
 
 export default App;

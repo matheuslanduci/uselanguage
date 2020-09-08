@@ -1,43 +1,41 @@
-{
-  "languages": [
-    {
-      "title": "English",
-      "description": "American English.",
-      "value": "enUS",
-      "words": {
-        "pages": {
-          "main": {
-            "title": "Welcome!"
-          }
-        },
-        "components": {}
-      }
-    },
-    {
-      "title": "Spanish",
-      "description": "European Spanish.",
-      "value": "spSP",
-      "words": {
-        "pages": {
-          "main": {
-            "title": "Bienvenido!"
-          }
-        },
-        "components": {}
-      }
-    },
-    {
-      "title": "Português",
-      "description": "Brazilian Portuguese.",
-      "value": "ptBR",
-      "words": {
-        "pages": {
-          "main": {
-            "title": "Bem-vindo!"
-          }
-        },
-        "components": {}
-      }
+[
+  {
+    "title": "English",
+    "description": "American English.",
+    "value": "enUS",
+    "words": {
+      "pages": {
+        "main": {
+          "title": "Welcome!"
+        }
+      },
+      "components": {}
     }
-  ]
-}
+  },
+  {
+    "title": "Español",
+    "description": "European Spanish.",
+    "value": "spSP",
+    "words": {
+      "pages": {
+        "main": {
+          "title": "Bienvenido!"
+        }
+      },
+      "components": {}
+    }
+  },
+  {
+    "title": "Português",
+    "description": "Brazilian Portuguese.",
+    "value": "ptBR",
+    "words": {
+      "pages": {
+        "main": {
+          "title": "Bem-vindo!"
+        }
+      },
+      "components": {}
+    }
+  }
+]

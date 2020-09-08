@@ -1,5 +1,4 @@
 import * as React from "react";
-import { usePersistedState } from "./utils";
 
 export interface ILanguageObject {
   title: string;
@@ -14,6 +13,7 @@ export interface ILanguageObject {
 export interface ILanguageOptions {
   defaultValue: ILanguageObject;
   persisted?: boolean;
+  languages?: ILanguageObject[];
 }
 
 export interface ILanguageContext {
@@ -25,35 +25,55 @@ export const LanguageContext = React.createContext<ILanguageContext>(
   {} as ILanguageContext
 );
 
+/**
+ * Returns the Language application provider.
+ *
+ * @param defaultValue - Default language.
+ * @param persisted - If the language will be saved on localStorage.
+ * @param languages - All languages used in application (only needed if persisted is true);
+ *
+ */
 export const LanguageProvider: React.FC<ILanguageOptions> = ({
   defaultValue,
   persisted,
+  languages,
   children
 }) => {
-  if (persisted) {
-    const [language, setLanguage] = usePersistedState<ILanguageObject>(
-      "language",
-      defaultValue
-    );
+  const [language, setLanguage] = React.useState<ILanguageObject>(() => {
+    if (persisted) {
+      const storageValue = localStorage.getItem("application_language");
 
-    return (
-      <LanguageContext.Provider value={{ language, setLanguage }}>
-        {children}
-      </LanguageContext.Provider>
-    );
-  } else {
-    const [language, setLanguage] = React.useState<ILanguageObject>(
-      defaultValue
-    );
+      if (storageValue) {
+        return languages!.filter(
+          lang => lang.value === JSON.parse(storageValue)
+        )[0];
+      } else {
+        return defaultValue;
+      }
+    } else {
+      return defaultValue;
+    }
+  });
 
-    return (
-      <LanguageContext.Provider value={{ language, setLanguage }}>
-        {children}
-      </LanguageContext.Provider>
-    );
-  }
+  React.useEffect(() => {
+    if (persisted) {
+      localStorage.setItem(
+        "application_language",
+        JSON.stringify(language.value)
+      );
+    }
+  }, [language, persisted]);
+
+  return (
+    <LanguageContext.Provider value={{ language, setLanguage }}>
+      {children}
+    </LanguageContext.Provider>
+  );
 };
 
+/**
+ * Returns the useLanguage context's hook.
+ */
 export const useLanguage = () => {
   const context = React.useContext(LanguageContext);
 
