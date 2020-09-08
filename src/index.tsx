@@ -31,7 +31,8 @@ export const LanguageProvider: React.FC<ILanguageOptions> = ({
   children
 }) => {
   if (persisted) {
-    const [language, setLanguage] = React.useState<ILanguageObject>(
+    const [language, setLanguage] = usePersistedState<ILanguageObject>(
+      "language",
       defaultValue
     );
 
@@ -41,8 +42,7 @@ export const LanguageProvider: React.FC<ILanguageOptions> = ({
       </LanguageContext.Provider>
     );
   } else {
-    const [language, setLanguage] = usePersistedState<ILanguageObject>(
-      "language",
+    const [language, setLanguage] = React.useState<ILanguageObject>(
       defaultValue
     );
 

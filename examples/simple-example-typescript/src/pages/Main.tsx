@@ -20,7 +20,9 @@ const MainPage: React.FC = () => {
       <h1>{language.words?.pages.main.title}</h1>
       <select onChange={handleChangeLanguage}>
         {lang.languages.map(lang => (
-          <option value={lang.value}>{lang.title}</option>
+          <option value={lang.value} selected={lang.value === language.value}>
+            {lang.title}
+          </option>
         ))}
       </select>
     </div>
