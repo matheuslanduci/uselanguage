@@ -29,6 +29,80 @@ You need to define the application's languages based on current schema:
 }
 ```
 
+### Setting schema
+
+Currently, you can set schema via JavaScript/TypeScript or JSON.
+
+JavaScript:
+
+```js
+// languages.js
+const languages = [
+  {
+    title: "English",
+    description: "American English",
+    value: "enUS",
+    words: {
+      pages: {
+        main: {
+          title: "Welcome!"
+        }
+      },
+      components: {}
+    }
+  },
+  {
+    title: "Português",
+    description: "Brazilian Portuguese",
+    value: "ptBR",
+    words: {
+      pages: {
+        main: {
+          title: "Bem-vindo!"
+        }
+      },
+      components: {}
+    }
+  }
+];
+
+export default languages;
+```
+
+JSON:
+
+```json
+// languages.json
+[
+  {
+    "title": "English",
+    "description": "American English.",
+    "value": "enUS",
+    "words": {
+      "pages": {
+        "main": {
+          "title": "Welcome!"
+        }
+      },
+      "components": {}
+    }
+  },
+  {
+    "title": "Português",
+    "description": "Brazilian Portuguese.",
+    "value": "ptBR",
+    "words": {
+      "pages": {
+        "main": {
+          "title": "Bem-vindo!"
+        }
+      },
+      "components": {}
+    }
+  }
+]
+```
+
 ### LanguageProvider
 
 Language Provider is the language's context provider on application.
@@ -36,12 +110,15 @@ Language Provider is the language's context provider on application.
 Arguments
 
 #### `"defaultValue: LanguageSchema"`
-Specify language's default value. 
+
+Specify language's default value.
 
 #### `"persisted?: boolean"`
+
 Specify if the state will be storaged on localStorage or not. Default value: false.
 
 #### `"languages: LanguageSchema[]"`
+
 Specify all languages used in application (only needed if persisted is true);
 
 Javascript:
@@ -50,11 +127,11 @@ Javascript:
 // App.js
 import React from "react";
 import Routes from "./routes";
-import lang from "./languages.json";
+import lanuages from "./languages.json";
 import { LanguageProvider } from "uselanguage";
 
 const App = () => {
-  const defaultLanguage = lang.languages[0];
+  const defaultLanguage = languages[0];
   return (
     <LanguageProvider defaultValue={defaultLanguage}>
       <Routes />
@@ -69,13 +146,61 @@ Typescript:
 // App.tsx
 import React from "react";
 import Routes from "./routes";
-import lang from "./languages.json";
+import languages from "./languages.json";
 import { LanguageProvider } from "uselanguage";
 
 const App: React.FC = () => {
-  const defaultLanguage = lang.languages[0];
+  const defaultLanguage = languages[0];
   return (
     <LanguageProvider defaultValue={defaultLanguage}>
+      <Routes />
+    </LanguageProvider>
+  );
+};
+```
+
+Persisted language (Save the application language)
+
+JavaScript:
+
+```jsx
+// App.js
+import React from "react";
+import Routes from "./routes";
+import lanuages from "./languages.json";
+import { LanguageProvider } from "uselanguage";
+
+const App = () => {
+  const defaultLanguage = languages[0];
+  return (
+    <LanguageProvider
+      defaultValue={defaultLanguage}
+      persisted
+      languages={languages}
+    >
+      <Routes />
+    </LanguageProvider>
+  );
+};
+```
+
+Typescript:
+
+```jsx
+// App.tsx
+import React from "react";
+import Routes from "./routes";
+import languages from "./languages.json";
+import { LanguageProvider } from "uselanguage";
+
+const App: React.FC = () => {
+  const defaultLanguage = languages[0];
+  return (
+    <LanguageProvider
+      defaultValue={defaultLanguage}
+      persisted
+      languages={languages}
+    >
       <Routes />
     </LanguageProvider>
   );
@@ -131,14 +256,14 @@ Javascript:
 ```jsx
 // pages/Page.js
 import React from "react";
-import lang from "./languages.json";
+import languages from "./languages.json";
 import { useLanguage } from "uselanguage";
 
 const Page = () => {
   const { language, setLanguage } = useLanguage();
 
   const handleChangeLanguage = e => {
-    const filteredLanguage = lang.languages.filter(
+    const filteredLanguage = languages.filter(
       lang => lang.value === e.target.value
     );
 
@@ -163,14 +288,14 @@ Typescript:
 ```jsx
 // pages/Page.js
 import React from "react";
-import lang from "./languages.json";
+import languages from "./languages.json";
 import { useLanguage } from "uselanguage";
 
 const Page: React.FC = () => {
   const { language, setLanguage } = useLanguage();
 
   const handleChangeLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const filteredLanguage = lang.languages.filter(
+    const filteredLanguage = languages.filter(
       lang => lang.value === e.target.value
     );
 
@@ -181,7 +306,7 @@ const Page: React.FC = () => {
     <div className="page">
       <h1>{language.words.pages.page.title}</h1>
       <select onChange={handleChangeLanguage}>
-        {lang.languages.map(lang => (
+        {languages.map(lang => (
           <option value={lang.value}>{lang.title}</option>
         ))}
       </select>
