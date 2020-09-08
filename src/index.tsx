@@ -1,4 +1,5 @@
 import * as React from "react";
+import { usePersistedState } from "./utils";
 
 export interface ILanguageObject {
   title: string;
@@ -12,6 +13,7 @@ export interface ILanguageObject {
 
 export interface ILanguageOptions {
   defaultValue: ILanguageObject;
+  persisted?: boolean;
 }
 
 export interface ILanguageContext {
@@ -25,15 +27,31 @@ export const LanguageContext = React.createContext<ILanguageContext>(
 
 export const LanguageProvider: React.FC<ILanguageOptions> = ({
   defaultValue,
+  persisted,
   children
 }) => {
-  const [language, setLanguage] = React.useState<ILanguageObject>(defaultValue);
+  if (persisted) {
+    const [language, setLanguage] = React.useState<ILanguageObject>(
+      defaultValue
+    );
 
-  return (
-    <LanguageContext.Provider value={{ language, setLanguage }}>
-      {children}
-    </LanguageContext.Provider>
-  );
+    return (
+      <LanguageContext.Provider value={{ language, setLanguage }}>
+        {children}
+      </LanguageContext.Provider>
+    );
+  } else {
+    const [language, setLanguage] = usePersistedState<ILanguageObject>(
+      "language",
+      defaultValue
+    );
+
+    return (
+      <LanguageContext.Provider value={{ language, setLanguage }}>
+        {children}
+      </LanguageContext.Provider>
+    );
+  }
 };
 
 export const useLanguage = () => {

@@ -33,6 +33,14 @@ You need to define the application's languages based on current schema:
 
 Language Provider is the language's context provider on application.
 
+Arguments
+
+#### `"defaultValue: string"`
+Specify language's default value. 
+
+#### `"persisted?: boolean"`
+Specify if the state will be storaged on localStorage or not. Default value: false.
+
 Javascript:
 
 ```jsx
@@ -115,7 +123,7 @@ const Page: React.FC = () => {
 
 #### Setting the current language
 
-Javascript
+Javascript:
 
 ```jsx
 // pages/Page.js
